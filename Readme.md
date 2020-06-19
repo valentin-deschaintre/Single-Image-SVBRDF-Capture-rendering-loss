@@ -53,13 +53,21 @@ These are the most interesting parameters.
 Here is a description of all useful parameters for inference :
 
 --input_dir	help="path to xml file, folder or image (defined by --imageFormat) containing information images"
+
 --mode	 required=True  choices=["test", "eval"])   help="Defines the mode of inference (test expect inputs with ground truth, eval expect single pictures )
+
 --output_dir	 required=True, help="where to put output files"
+
 --checkpoint	 required=True, default=None, help="directory with checkpoint to use for testing "
+
 --testMode	 type=str, default="auto"	 choices=["auto", "xml", "folder", "image"], help="What kind of input should be used (auto should automatically determine)"
+
 --imageFormat	 type=str, default="png	 choices=["jpg", "png", "jpeg", "JPG", "JPEG", "PNG"], help="Which format have the input files"
+
 --batch_size	 type=int, default=1, help="number of images in batch to process parallely"
+
 --scale_size	 type=int, default=288, help="scale images to this size before cropping to 256x256. Should be used carefully, it's best to use the actual size of your images here"
+
 --logOutputAlbedos	"Log the output albedos diffuse and specular default is false, to use just add "--logOutputAlbedos""
 
 ## Bibtex
