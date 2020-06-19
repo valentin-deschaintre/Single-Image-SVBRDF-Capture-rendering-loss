@@ -1,5 +1,5 @@
 # Guided Fine-Tuning for Large-Scale Material Transfer
-
+![teaser](https://team.inria.fr/graphdeco/files/2018/08/teaser_v0.png)
 This repository contains the code for our paper "Single-Image SVBRDF Capture with a Rendering-Aware Deep Network, Valentin Deschaintre, Miika Aittala, Fredo Durand, George Drettakis, Adrien Bousseau. Transactions on graphics (Siggraph Conference Proceedings),  aug 2018".
 
 The project webpage can be found here: https://team.inria.fr/graphdeco/projects/deep-materials/
