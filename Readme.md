@@ -1,4 +1,4 @@
-# Guided Fine-Tuning for Large-Scale Material Transfer
+# Single-Image SVBRDF Capture with a Rendering-Aware Deep Network
 ![teaser](https://team.inria.fr/graphdeco/files/2018/08/teaser_v0.png)
 This repository contains the code for our paper "Single-Image SVBRDF Capture with a Rendering-Aware Deep Network, Valentin Deschaintre, Miika Aittala, Fredo Durand, George Drettakis, Adrien Bousseau. Transactions on graphics (Siggraph Conference Proceedings),  aug 2018".
 
@@ -18,6 +18,12 @@ This code relies on Tensorflow 1.X but can be adapted to TF 2.X with the followi
 
 It is based on python 3.X, numpy, imageio and opencv for python.
 
+## /!\Material model
+This network is trained to use 256x256 linear input pictures (please use ---correctGamma if your input still has gamma correction, this option assumes gamma 2.2) and output linear parameters. Higher resolution tend to work less well despite the convolutional nature of the network (see https://team.inria.fr/graphdeco/projects/large-scale-materials/ supplemental materials). 
+
+The model used is the one described in this paper (similar to Adobe Substance), **changing the rendering model implementation to render the results will cause strong appearance difference** as different implementations use the parameters differently (despite sharing their names, for example diffuse and specular will be controled for light conservation or roughness will be squared)! 
+
+This method is based purely on the rendering loss, so you should be able to retrain the network using the same dataset but a different rendering loss material model implementation if you need.
 
 ## Re-training the network
 To retrain the network, the basic version is: python3 material_net.py --mode train --output_dir $outputDir --input_dir $inputDir/trainBlended --batch_size 8 --loss render --useLog
@@ -29,8 +35,8 @@ There are a lot of options to explore in the code if you are curious.
 **First download the trained weights here: https://repo-sam.inria.fr/fungraph/deep-materials/InferenceCode_DeepMaterials.zip**
 
 INPUT-OUTPUTS:
-This code takes pictures of material taken with a cellphone (Fov ~ 45 °) and flash approximately in the middle (be careful not to entirerly burn the picture on very specular materials).
-It outputs a set of 4 maps (diffuse, specular, roughness and normal) corresponding to a Cook-Torrance GGX implementation.
+This code takes pictures of material taken with a cellphone (Fov ~ 45 Â°) and flash approximately in the middle (be careful not to entirerly burn the picture on very specular materials).
+It outputs a set of 4 maps (diffuse, specular, roughness and normal) corresponding to a Cook-Torrance GGX implementation described in the paper (similar to the one of Adobe Substance for coherence).
 
 PRE-REQUISITE(install):
 
