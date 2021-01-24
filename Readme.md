@@ -15,6 +15,9 @@ Many important material effects are view-dependent, and as such ambiguous when o
 
 ## Software requirements
 This code relies on Tensorflow 1.X but can be adapted to TF 2.X with the following compatibility code:
+Replace tensorflow import everywhere by:
+import tensorflow.compat.v1 as tf
+tf.disable_v2_behavior()
 
 It is based on python 3.X, numpy, imageio and opencv for python.
 
